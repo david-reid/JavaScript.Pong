@@ -1,0 +1,19 @@
+{
+  "name": "javascript.pong",
+  "version": "1.0.0",
+  "description": "JavaScript Pong",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/david-reid/JavaScript.Pong.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/david-reid/JavaScript.Pong/issues"
+  },
+  "homepage": "https://github.com/david-reid/JavaScript.Pong#readme"
+}
