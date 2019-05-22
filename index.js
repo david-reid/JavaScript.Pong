@@ -16,6 +16,8 @@ let ballX = 75;
 let ballY = 75;
 let ballSpeedX = 5;
 let ballSpeedY = 7;
+let paddle1Score = 0;
+let paddle2Score = 0;
 
 
 
@@ -44,12 +46,18 @@ function drawEverything() {
     // Draw background
     colorRect(0, 0, canvas.width, canvas.height, BACKGROUND_COLOR);
     
+    // Draw the net.
+    drawNet();
+
     // Draw ball
     colorCircle(ballX,ballY, 10, BALL_COLOR);
     
     // Draw paddles
     colorRect(0, paddle1Y, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_COLOR);
-    colorRect(canvas.width - PADDLE_WIDTH, paddle2Y, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_COLOR); // New
+    colorRect(canvas.width - PADDLE_WIDTH, paddle2Y, PADDLE_WIDTH, PADDLE_HEIGHT, PADDLE_COLOR);
+
+    printText(paddle1Score.toString(), 200, 80, "60px", "Arial", TEXT_COLOR);
+    printText(paddle2Score.toString(), canvas.width - 235, 80, "60px", "Arial", TEXT_COLOR);
 }
 
 function moveEverything() {
@@ -73,6 +81,12 @@ function colorCircle(centerX,centerY, radius, fillColor) {
     canvasContext.beginPath();
     canvasContext.arc(centerX,centerY, 10, 0,Math.PI*2, true);
     canvasContext.fill();
+}
+
+function printText(text, xPos, yPos, size, font, color) {
+    canvasContext.fillStyle = color;
+    canvasContext.font = `${size} ${font}`;
+    canvasContext.fillText(text, xPos, yPos);
 }
 
 function updateMousePos(evt) {
@@ -115,7 +129,7 @@ function checkBallXCollisions() {
         }
         else
         {
-            //paddle2Score += SCORE_POINT;
+            paddle2Score ++;
             ballReset();
         }
     }
@@ -130,7 +144,7 @@ function checkBallXCollisions() {
         }
         else
         {
-            //paddle1Score += SCORE_POINT;
+            paddle1Score ++;
             ballReset();
         }
     }
@@ -138,8 +152,14 @@ function checkBallXCollisions() {
 
 function checkBallYCollisions() {
 
-    if (ballY < 0 || ballY > canvas.height - PADDLE_WIDTH)
-    {
+    if (ballY < 0 || ballY > canvas.height - PADDLE_WIDTH) {
         ballSpeedY = -ballSpeedY;
+    }
+}
+
+function drawNet() {
+
+    for ( let i = 0; i < canvas.height; i += 40 ) {
+        colorRect(canvas.width / 2 - 1, i, 2, 20, PADDLE_COLOR, canvasContext);
     }
 }
