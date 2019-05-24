@@ -7,6 +7,7 @@ const PADDLE_COLOR = '#f5f5f5';
 const TEXT_COLOR = '#ec88e8';
 const PADDLE_WIDTH = 10;
 const PADDLE_HEIGHT = 100;
+const VICTORY_CONDITION = 9;
 
 let canvas; 
 let canvasContext;
@@ -18,7 +19,7 @@ let ballSpeedX = 5;
 let ballSpeedY = 7;
 let paddle1Score = 0;
 let paddle2Score = 0;
-
+let showWinningScreen = false;
 
 
 // Execution
@@ -30,6 +31,9 @@ window.onload = function() {
     setInterval(gameLoop, 1000/FRAMES_PER_SECOND);
 
     canvas.addEventListener('mousemove', updateMousePos); 
+
+    // New click to continue mouse event.
+    canvas.addEventListener('mousedown', clickToContinue);
 }
 
 
@@ -45,6 +49,28 @@ function drawEverything() {
     
     // Draw background
     colorRect(0, 0, canvas.width, canvas.height, BACKGROUND_COLOR);
+
+    // New. Draw winning screen here...
+    if ( showWinningScreen  )
+    {
+        
+        let winner = "";
+        
+        if ( paddle1Score >= VICTORY_CONDITION )
+        {
+            winner = "1";
+        }
+        
+        if ( paddle2Score >= VICTORY_CONDITION )
+        {
+            winner = "2";
+        }
+        
+        printText('Paddle ' + winner + ' Wins', 110, 250, "60px", "Arial", PADDLE_COLOR);
+        printText('Click to continue', 190, 320, "30px", "Arial", TEXT_COLOR);
+        
+        return;
+    }
     
     // Draw the net.
     drawNet();
@@ -99,6 +125,11 @@ function updateMousePos(evt) {
 }
 
 function ballReset() {
+
+    if ( paddle1Score > VICTORY_CONDITION || paddle2Score > VICTORY_CONDITION )
+    {
+        showWinningScreen = true;
+    }
     ballX = canvas.width/2;
     ballY = canvas.height/2;
 }
@@ -161,5 +192,14 @@ function drawNet() {
 
     for ( let i = 0; i < canvas.height; i += 40 ) {
         colorRect(canvas.width / 2 - 1, i, 2, 20, PADDLE_COLOR, canvasContext);
+    }
+}
+
+function clickToContinue(event) {
+    if ( showWinningScreen )
+    {
+        paddle1Score = 0;
+        paddle2Score = 0;
+        showWinningScreen = false;
     }
 }
