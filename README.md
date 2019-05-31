@@ -29,10 +29,4 @@ There is a more complete version of Pong on my website. You can play it here.
 
 [Pong.js](https://davidreid.blog/apps/pong/)
 
-The source code for Pong.js is also available here on my GitHub profile. 
-
-[Pong.js Source code](https://github.com/david-reid/Pong.js)
-
-Again, you are free to download, fork and/or modify as you see fit.
-
 Enjoy.
