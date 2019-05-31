@@ -23,10 +23,10 @@ To complete the tutorial, all you need is a simple text editor and a browser. I 
 The game can run on your browsers `file://` protocol so there are no requirements to host a local server. I used Chrome for the
 tutorial I suggest you do the same. The game has not been tested on IE, Safari or Edge.
 
-## Pong.js
+## Play Pong on my website
 
 There is a more complete version of Pong on my website. You can play it here.
 
-[Pong.js](https://davidreid.blog/apps/pong/)
+[Pong](https://davidreid.blog/apps/pong/)
 
 Enjoy.
