@@ -27,6 +27,6 @@ tutorial I suggest you do the same. The game has not been tested on IE, Safari o
 
 There is a more complete version of Pong on my website. You can play it here.
 
-[Pong](https://davidreid.blog/apps/pong/)
+[Play JavaScript Pong](https://davidreid.blog/apps/pong/)
 
 Enjoy.
