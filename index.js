@@ -88,6 +88,10 @@ function drawEverything() {
 
 function moveEverything() {
     
+    if ( showWinningScreen ) {
+        return;
+    }
+    
     ballX += ballSpeedX;
     ballY += ballSpeedY;
 
